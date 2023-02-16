@@ -1,0 +1,16 @@
+# Changelog
+
+## Version 1.0.0 14-01-2023
+
+### Added
+- Lanzamiento inicial del proyecto.
+- Funcionalidad de regitro de tarjetas agregada.
+- Funcionalidad de obtencion de numero de tarjeta asociada al token agregada.
+
+
+## Version 1.1.0 16-02-2023
+
+### Added
+- Se agrega archivo README.md.
+- Se agrega archicho CHANGELOG.txt.
+- Se agrega base de datos para el registro de las tarjetas que guarda el numero de la misma, encriptado.
