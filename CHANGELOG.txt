@@ -1,16 +1,8 @@
 # Changelog
 
-## Version 1.0.0 14-01-2023
+## [Unreleased]
 
 ### Added
-- Lanzamiento inicial del proyecto.
-- Funcionalidad de regitro de tarjetas agregada.
-- Funcionalidad de obtencion de numero de tarjeta asociada al token agregada.
 
+Card number encryption and database storage [1] (https://github.com/emarocha4/public-vault-ms/pull/2)
 
-## Version 1.0.1 16-02-2023
-
-### Added
-- Se agrega archivo README.md.
-- Se agrega archicho CHANGELOG.txt.
-- Se agrega base de datos para el registro de las tarjetas que guarda el numero de la misma, encriptado.

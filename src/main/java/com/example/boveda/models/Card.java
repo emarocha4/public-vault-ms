@@ -2,6 +2,8 @@ package com.example.boveda.models;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "cards")
 public class Card {
@@ -10,26 +12,22 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
     @Column(name = "encrypted-card-number")
     private String cardNumber;
-
     @Column(name = "token")
     private String token;
+    @Column(name = "creation-date")
+    private Date creationDate;
+
 
     public Card() {
     }
 
-    public Card(String token, byte[] cardNumber) {
-    }
-
-    public Card(int id, String cardNumber, String token) {
-        this.id = id;
+    public Card(String cardNumber, String token) {
         this.cardNumber = cardNumber;
         this.token = token;
     }
 
-    // Getters & Setters
     public int getId() {
         return id;
     }
@@ -52,6 +50,14 @@ public class Card {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }
 
