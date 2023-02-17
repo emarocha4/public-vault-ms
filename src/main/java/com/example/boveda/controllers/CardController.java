@@ -1,32 +1,39 @@
 package com.example.boveda.controllers;
 
-import com.example.boveda.services.CardResponsePost;
+
 import com.example.boveda.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
-@RequestMapping("/cardvault")
+@RequestMapping("/api")
 public class CardController {
-
     @Autowired
-    private final CardService cardService;
+    private CardService cardService;
 
-    public CardController(CardService cardService) {
-        this.cardService = cardService;
+    @PostMapping("/vault-cards")
+    public ResponseEntity<String> createCard(@RequestBody String CardNumber) throws Exception {
+        try {
+            String token = cardService.encryptNumber(CardNumber);
+            return new ResponseEntity<>(token, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    //Endpoints
-    @PostMapping(path = "/token", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CardResponsePost> generateToken (@RequestBody String creditCardNumber){
-        return cardService.generateToken(creditCardNumber);
+    @GetMapping("/vault-cards/{token}")
+    public ResponseEntity<String> getCardNumber(@PathVariable String token) {
+        try {
+            String number = cardService.getNumber(token);
+            return new ResponseEntity<>(number, HttpStatus.OK);
+        } catch (ChangeSetPersister.NotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @GetMapping("/number/{token}")
-    public ResponseEntity<String> getCreditCardNumber (@PathVariable String token){
-        return cardService.getCreditCardNumber(token);
-    }
 }

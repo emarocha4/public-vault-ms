@@ -12,9 +12,6 @@ Vault utiliza la version 3.0.2 de SpringBoot.
 Vault ofrece una gran cantidad de características y herramientas para añadir tus tarjetas y almacenar la información de forma segura en la base de datos. También puedes editar y eliminar tarjetas según sea necesario.
 Vault utiliza un sistema de cifrado seguro para proteger tus tarjetas. Nunca almacenamos información de tarjetas sin cifrar en la base de datos.
 
-## Licencia
-
-Vault se distribuye bajo la licencia MIT. Consulta el archivo LICENSE.txt para obtener más información.
 
 ## Contacto
 
