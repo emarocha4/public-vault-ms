@@ -1,0 +1,8 @@
+# Changelog
+
+## [Unreleased]
+
+### Added
+
+Card number encryption and database storage [1] (https://github.com/emarocha4/public-vault-ms/pull/2)
+
