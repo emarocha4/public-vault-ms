@@ -12,21 +12,24 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "encrypted-card-number")
+    @Column(name = "encrypted_card_number", nullable = false)
     private String cardNumber;
-    @Column(name = "token")
+    @Column(name = "token", nullable = false)
     private String token;
-    @Column(name = "creation-date")
+    @Column(name = "environment_variable_key", nullable = false)
+    private String key;
+    @Column(name = "creation_date", nullable = false)
     private Date creationDate;
-
 
     public Card() {
     }
 
-    public Card(String cardNumber, String token) {
+    public Card(String cardNumber, String token, String key) {
         this.cardNumber = cardNumber;
         this.token = token;
+        this.key = key;
     }
+
 
     public int getId() {
         return id;
@@ -58,6 +61,14 @@ public class Card {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }
 
